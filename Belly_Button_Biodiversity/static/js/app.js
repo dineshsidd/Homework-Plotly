@@ -1,3 +1,5 @@
+
+
 function buildMetadata(sample) {
 
   // @TODO: Complete the following function that builds the metadata panel
@@ -35,8 +37,9 @@ function buildCharts(sample) {
       hovertext : raw_data.otu_labels.slice(0,10)
     }];
     var layout = {
+      title: `Top 10 OTU IDs of the sample ${sample}`,
       height: 400,
-      width: 500
+      width: 400
     };
     
     Plotly.newPlot('pie', data, layout);
@@ -45,6 +48,7 @@ function buildCharts(sample) {
     var trace1 = {
       x: raw_data.otu_ids,
       y: raw_data.sample_values,
+      text : (raw_data.sample_values , raw_data.otu_labels),
       mode: 'markers',
       marker: {
         size: raw_data.sample_values,
@@ -57,19 +61,14 @@ function buildCharts(sample) {
     var layout = {
       title: 'OTU-ID vs Sample Values',
       showlegend: false,
-      height: 600,
-      width: 1000
+      height: 500,
+      width: 1300
     };
     
     Plotly.newPlot('bubble', data, layout);
 
   })
-  
-
-  
- 
-
-    // @TODO: Use `d3.json` to fetch the sample data for the plots
+     // @TODO: Use `d3.json` to fetch the sample data for the plots
     // @TODO: Build a Bubble Chart using the sample data
     // @TODO: Build a Pie Chart
     // HINT: You will need to use slice() to grab the top 10 sample_values,
@@ -94,6 +93,7 @@ function init() {
     const firstSample = sampleNames[0];
     buildCharts(firstSample);
     buildMetadata(firstSample);
+    buildGauge(firstSample);
   });
 }
 
@@ -101,6 +101,7 @@ function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
   buildMetadata(newSample);
+  buildGauge(newSample);
 }
 
 // Initialize the dashboard
