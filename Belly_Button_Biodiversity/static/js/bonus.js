@@ -29,7 +29,7 @@ var data = [{ type: 'scatter',
    x: [0], y:[0],
     marker: {size: 28, color:'850000'},
     showlegend: false,
-    name: 'speed',
+    name: 'Scrubs/Week',
     text: level,
     hoverinfo: 'text+name'},
   { values: [50/6, 50/6, 50/6, 50/6, 50/6, 50/6, 50],
@@ -57,7 +57,7 @@ var layout = {
         color: '850000'
       }
     }],
-  title: '<b>Gauge</b> <br> Speed 0-100',
+  title: '<b>Belly-Button Washing Frequency</b> <br> Scrubs per Week',
   height: 500,
   width: 500,
   xaxis: {zeroline:false, showticklabels:false,
